@@ -1,0 +1,134 @@
+// Tugas Mengimplementasikan Stack dengan Linked List
+
+// Arafia Isnayu Akaf _ 1817051021
+
+#include <iostream>
+using namespace std;
+   
+struct Elemen 
+{
+	
+    int data;
+    Elemen *link;
+    
+};
+
+Elemen *top = NULL;
+bool isEmpty()
+
+{
+	
+    if(top == NULL)
+	return true; else
+	return false;
+	
+    }
+
+void push(int nilai)
+
+{
+
+	Elemen *xts = new Elemen();
+	xts->data = nilai;
+	xts->link = top;
+	top = xts;
+	cout<<"Nilainya "<<nilai<<" lalu masukkan ke dalam Stack \n";
+
+	}	
+
+void pop ()
+
+{
+
+	if ( isEmpty() )
+		cout<<"Stack Kosong";
+	else
+
+{
+
+	cout<<"Stack Telah Di Pop\n";
+	Elemen *xts = top;
+	top = top -> link;
+	delete(xts);
+
+	}
+}
+
+void showTop()
+
+{
+
+	if ( isEmpty() )
+	cout<<"Stack Kosong";
+	else
+	cout<<"Elemen Diatas Sekarang adalah: "<< top->data;
+	cout<<endl;
+
+}
+
+void printStackList()
+
+{
+
+	if ( isEmpty() )
+	cout<<"Stack yang Kosong";
+	else
+
+{
+
+	Elemen *temp=top;
+	while(temp!=NULL)
+
+	{	
+
+	cout<<"|"<<temp->data<<"|"<<"\n";
+	temp=temp->link;
+		}
+cout<<"\n";
+	}
+}
+
+int main()
+
+{
+	int pil, flag=1, nilai;
+
+
+ while( flag == 1){
+cout<<"\n==================\n";
+cout<<"1.Push \n";
+cout<<"2.Pop \n";
+cout<<"3.showTop \n";
+cout<<"4.Exit \n";
+cout<<"====================\n";
+cout<<"Pilih : ";cin>>pil;
+cout<<"====================";
+cout<<endl<<endl;
+	switch (pil)
+
+	{
+
+	case 1: cout<<"Masukkan Nilainya: ";
+			cin>>nilai;
+			push(nilai);
+			cout << "====List Stack====\n";
+			printStackList();
+			break;
+	case 2: pop();
+			cout << "====List Stack====\n";
+			printStackList();
+			break;
+	case 3: showTop();
+			cout << "====List Stack====\n";
+			printStackList();
+			break;
+	case 4: flag = 0;
+			cout << endl << endl;
+			break;
+         
+ }
+ }
+
+    return 0;
+
+}
